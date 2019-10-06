@@ -1,0 +1,39 @@
+/*.tp-card {*/
+/*  max-width: 400px;*/
+/*}*/
+
+/* LAPTOP and DESKTOP*/
+@media (min-width: 1025px){
+
+  .container{
+    width:auto;
+    height:auto;
+    border:0px solid red;
+    padding-left: 400px;
+  }
+
+
+}
+
+.container{
+  width:auto;
+  height:auto;
+  border:0px solid red;
+}
+.image1{
+  margin-left:120px;
+}
+.image{
+  height:100px;
+}
+
+.row{
+  margin-top:40px;
+}
+
+.col-lg-6{
+  margin-top:20px;
+}
+.col-lg-5{
+    margin-top:10px;
+}

@@ -1,0 +1,46 @@
+<h1 class="heading" style="margin-top: 10px"><img src="./assets/githublogo.png"
+                                                  style="height: 50px;width: 50px;margin-left: auto;margin-top: 10px;"
+                                                  alt="Github"> Github Profile Viewer </h1>
+<div>
+  <!-- Search form -->
+  <div class="input-group md-form form-sm form-2 pl-0 search">
+    <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search"
+           [(ngModel)]=searchValue>
+    <button mat-button color="primary" (click)="onUserDetailGet(searchValue,1,10)">
+      Search
+    </button>
+  </div>
+</div>
+
+<br>
+
+  <div class="container">
+    <cdk-virtual-scroll-viewport itemSize="200" class="viewport">
+      <mat-card *cdkVirtualFor="let i of users" class="example-card" (click)="onUsersSet(i);"
+                routerLink="/user/{{i.id}}">
+        <mat-card-header>
+          <img mat-card-avatar src="{{i.profileUrl}}" alt="Image Not Found" style="width: 15%;height:15%;padding: 1em;">
+          <mat-card-title>{{i.name}}</mat-card-title>
+          <mat-card-subtitle>@{{i.handler}}</mat-card-subtitle>
+          <mat-card-subtitle>{{i.company}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            {{i.bio}}
+          </p>
+        </mat-card-content>
+      </mat-card>
+      <br>
+    </cdk-virtual-scroll-viewport>
+
+  </div>
+  <mat-paginator
+    class="page"
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 50, 100]"
+    (page)="pageEvent = $event">
+  </mat-paginator>
+
+  <div *ngIf="pageEvent?onUserDetailGet(searchValue,pageEvent.pageIndex+1,pageEvent.pageSize):false" >
+    </div>
